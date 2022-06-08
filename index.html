@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://use.fontawesome.com/11fa36e269.js"></script>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="section">
+    <video  id="vid" muted>
+        <source src="./assets/vid.webm" type="video/webm">
+        Your browser does not support the video tag.
+    </video>
+    <audio id="aud" controls>
+        <source src="./assets/audio.mp3" type="audio/mp3">
+      Your browser does not support the audio element.
+      </audio>
+      
+      <div class="content">
+          <button onclick="stop()"><h1 id="h">Play</h1></button> 
+      </div>
+    </div>
+    <footer>
+        <i id="icon" class="fa fa-arrow-up" aria-hidden="true"></i>
+        <p>Click arrow</p>
+        <i id="icon2" class="fa fa-arrow-down" aria-hidden="true"></i>
+
+    </footer>
+</body>
+<script>
+    const video = document.getElementById("vid")
+    const audio = document.getElementById("aud")
+    const str = document.getElementById("h")
+    const icon1 = document.getElementById("icon")
+    const icon2 = document.getElementById("icon2")
+
+    let number = (parseInt)(audio.volume)
+    document.addEventListener('keydown', function(e) {
+    switch (e.keyCode) {
+        case 38:
+            audio.volume+=0.1
+            icon1.style.color = "red"
+            break;
+        case 40:
+            audio.volume-=0.1
+            icon2.style.color = "red"
+            break;
+    }
+});
+        
+    
+    function stop(){
+        if(str.innerHTML==="Play"){
+        video.play()
+        audio.play()
+        str.innerHTML="Stop"
+        }
+        else{
+            video.pause()
+            audio.pause()
+            str.innerHTML="Play"
+
+    }
+    }
+</script>
+</html>
